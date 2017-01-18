@@ -13,7 +13,7 @@ import org.apache.hadoop.mapred.InvalidInputException;
 public class MainClass {
 
     public static void main(String[] args) {
-        final String textFile = "/home/data/Documents/uservisits";
+        final String textFile = "/home/data/Documents/uservisits1";
         final String appNameForSpark = "Spark Aggregation Application";
         final String masterNameForSpark = "local";
         final String bootstrap = "localhost:9092";
