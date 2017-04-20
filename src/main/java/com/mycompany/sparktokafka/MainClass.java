@@ -6,10 +6,6 @@ import java.util.Map;
 import kafka.common.FailedToSendMessageException;
 import org.apache.hadoop.mapred.InvalidInputException;
 
-/**
- *
- * @author adrian
- */
 public class MainClass {
 
     public static void main(String[] args) {
@@ -21,6 +17,7 @@ public class MainClass {
         final String topicName = "sspark";
         
         Map<String, Long> mapResult = new LinkedHashMap<>();
+        
         try {
             mapResult = SparkAggregation.aggregateData(textFile, appNameForSpark, masterNameForSpark);
         } catch (NullPointerException|ArrayIndexOutOfBoundsException ex) {
@@ -29,13 +26,14 @@ public class MainClass {
         catch (InvalidInputException ex) {
             System.err.println("check if name of file is valid: " + ex);
         }
-        KafkaWriter kWriter = new KafkaWriter(bootstrap);       
+        
+        KafkaWriter kWriter = new KafkaWriter(bootstrap); 
+        
         try {
             kWriter.writeAsJson(mapResult, topicName);
         } catch (FailedToSendMessageException ex) {
             System.err.println(ex.toString());
-        }
-        
+        }        
     }
-
+    
 }
