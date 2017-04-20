@@ -10,10 +10,6 @@ import org.apache.hadoop.mapred.InvalidInputException;
 import org.apache.spark.api.java.*;
 import org.apache.spark.SparkConf;
 
-/**
- *
- * @author adrian
- */
 public class SparkAggregation {
 
     public static Map<String, Long> aggregateData(String textFile, String appName, String masterName)
@@ -34,9 +30,10 @@ public class SparkAggregation {
                 .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().stream().count(),
                         (a, b) -> a, //or throw an exception
                                     LinkedHashMap::new));   //counts number of search words from each country 
+        
         mapResult.forEach((k, v) -> System.out.println("country : " + k + " number of words : " + v));
+        
         return mapResult;
-
     }
 
 }
