@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.sparktokafka;
 
 import java.util.Map;
@@ -12,12 +7,7 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
-/**
- *
- * @author adrian
- */
 public class KafkaWriter {
-
     private static Producer<String, String> producer;
 
     public KafkaWriter(String servers) {
@@ -31,7 +21,6 @@ public class KafkaWriter {
     }
     
     /*method writes aggregated map into kafka in simple format*/
-
     public void writeAsJson(Map<String, Long> map, String topicName) throws FailedToSendMessageException {
         Map<String, Long> data = map;
             data.forEach((k, v)
@@ -40,5 +29,4 @@ public class KafkaWriter {
             System.out.println("dataset is probably written to topic" + topicName);
             producer.close();
     }
-
 }
