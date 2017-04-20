@@ -9,12 +9,12 @@ import org.apache.hadoop.mapred.InvalidInputException;
 public class MainClass {
 
     public static void main(String[] args) {
-        final String textFile = "/home/data/Documents/uservisits";
-        final String appNameForSpark = "Spark Aggregation Application";
-        final String masterNameForSpark = "local";
-        final String bootstrap = "localhost:9092";
-        final String groupId = "test-group2";
-        final String topicName = "sspark";
+        String textFile = "/home/data/Documents/uservisits";
+        String appNameForSpark = "Spark Aggregation Application";
+        String masterNameForSpark = "local";
+        String bootstrap = "localhost:9092";
+        String groupId = "test-group2";
+        String topicName = "sspark";
         
         Map<String, Long> mapResult = new LinkedHashMap<>();
         
